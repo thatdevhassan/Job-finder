@@ -24,14 +24,14 @@ soup = BeautifulSoup(response.content,'html.parser')
 
 seven_day = soup.find(id="seven-day-forecast")
 forecast_items = seven_day.find_all(class_="tombstone-container")
-tonight = forecast_items[0]
-print(tonight.prettify())
-
-
+print(forecast_items)
+seven_day1 = forecast_items[0]
+seven_day2 = forecast_items[1]
+seven_day3 = forecast_items[2]
+print(seven_day1.find(class_='temp-high').get_text())
 print('\n')
 print('\n')
+print(seven_day2.find(class_='temp-high').get_text())
 print('\n')
 print('\n')
-print('\n')
-
-# print(day.get_text())
+print(seven_day3.find(class_='temp-high').get_text())

@@ -1,10 +1,11 @@
-# scraping data from a wether forcast website.
+# scraping data from a weather forcast website.
 # date: 14 December
 
 import bs4
 import pprint
 import requests
 import csv
+import time
 import pandas as pd
 from bs4 import BeautifulSoup
 
@@ -21,6 +22,8 @@ Short_description = []
 Temperature = [] 
 Day = []
 Full_description = []
+
+# looping
 for insidelist in forecast_list.find_all('li' ,class_='forecast-tombstone'):
 
 
@@ -40,19 +43,7 @@ for insidelist in forecast_list.find_all('li' ,class_='forecast-tombstone'):
     Day.append(day)
     Full_description.append(fd)
 
-
-
-
-
-
-    # # this will return the temperature and description
-    # print("description " ,desc)
-    # print("temperatire " ,temp)
-    # print('day', day)
-    # print("\n")
-# my_list = [Short_description, Day]
-
-
+# function for removing "escape char"
 def remove_line(target):
 
     new_Day = []
@@ -70,7 +61,13 @@ Database['Temperature'] = Temperature
 Database['Day'] = real_day
 Database['Full-description'] = Full_description
 
-pprint.pprint(Database)
+# pprint.pprint(Database)
+
+
+with open("data.csv",'w') as fileopen:
+    new = csv.writer(fileopen,Database)
+
+
 
 
 

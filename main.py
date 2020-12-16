@@ -3,6 +3,7 @@
 
 import bs4
 import requests
+import csv
 from bs4 import BeautifulSoup
 
 
@@ -17,12 +18,17 @@ for insidelist in forecast_list.find_all('li' ,class_='forecast-tombstone'):
     # instantiating desc and temp
     desc = insidelist.find('p',class_='short-desc')
     temp = insidelist.find('p', class_='temp')
+    day = insidelist.find('p', class_='period-name')
+    #getting full description
+    fd = insidelist.find('img').get('alt')
+    print(fd)
 
-
-    # this will return the temperature and description
-    print("description " ,desc.get_text().strip())
-    print("temperatire " ,temp.get_text().strip())
-    print("\n")
-    
+    # # this will return the temperature and description
+    # print("description " ,desc.get_text().strip())
+    # print("temperatire " ,temp.get_text().strip())
+    # print('day', day.get_text().strip())
+    # print("\n")
+    # print(full_discription) 
+    print('\n')   
 
 

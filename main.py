@@ -14,8 +14,12 @@ forecast_list = soup.find('ul', id="seven-day-forecast-list")
 
 for insidelist in forecast_list.find_all('li' ,class_='forecast-tombstone'):
     # print(insidelist.text)
+    # instantiating desc and temp
     desc = insidelist.find('p',class_='short-desc')
     temp = insidelist.find('p', class_='temp')
+
+
+    # this will return the temperature and description
     print("description " ,desc.get_text().strip())
     print("temperatire " ,temp.get_text().strip())
     print("\n")
